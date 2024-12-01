@@ -8,6 +8,7 @@
 - A\* player navigation
 - Ability to add up to 5000 buildings at a time
 - Good performance
+- Separated game logic and ECS-based game view 
 
 ### Dependencies
 
