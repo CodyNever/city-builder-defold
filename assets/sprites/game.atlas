@@ -1,0 +1,31 @@
+images {
+  image: "/assets/sprites/b0 1x1.png"
+}
+images {
+  image: "/assets/sprites/tile.png"
+}
+images {
+  image: "/assets/sprites/b1 3x2.png"
+}
+images {
+  image: "/assets/sprites/b2 2x2.png"
+}
+images {
+  image: "/assets/sprites/b3 1x1.png"
+}
+images {
+  image: "/assets/sprites/b4 1x1.png"
+}
+images {
+  image: "/assets/sprites/b5 2x2.png"
+}
+images {
+  image: "/assets/sprites/b6 1x1.png"
+}
+images {
+  image: "/assets/sprites/hero.png"
+}
+images {
+  image: "/assets/sprites/circle.png"
+}
+extrude_borders: 2

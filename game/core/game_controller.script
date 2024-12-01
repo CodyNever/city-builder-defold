@@ -1,0 +1,115 @@
+local city_builder_game = require("game.core.city_builder_game")
+local const = require("game.const")
+local ecs_game_view = require("view_systems.ecs")
+local astar_navigation = require("game.core.astar_navigation")
+
+---@param size vector2int
+local function spawn_field_in_view(size)
+	for x = 1, size.x do
+		for y = 1, size.y do
+			ecs_game_view.create_field_tile_command({ x = x, y = y })
+		end
+	end
+end
+
+---@param entity entity
+---@param response game_response
+---@param on_success function
+local function handle_game_response(entity, response, on_success)
+	if response.success then
+		on_success()
+	end
+
+	entity.request_processed_flag = {}
+	ecs_game_view.update_entity(entity)
+end
+
+local function init_debug_tools()
+	if const.IS_DEBUG then
+		profiler.enable_ui(true)
+		profiler.set_ui_view_mode(profiler.VIEW_MODE_MINIMIZED)
+	end
+end
+
+local function init_game()
+	local start_position = { x = 1, y = 1 } --[[ @as vector2int ]]
+
+	-- services
+	astar_navigation.setup()
+
+	-- game
+	city_builder_game.send(const.REQUEST_INIT_FIELD_KEY, const.FIELD_SIZE)
+	city_builder_game.send(const.REQUEST_CREATE_HERO_KEY, start_position)
+
+	-- view
+	ecs_game_view.create_camera_command(start_position)
+	ecs_game_view.create_hero_command(start_position)
+	spawn_field_in_view(const.FIELD_SIZE)
+end
+
+---@param entity table
+local function process_destruction_request(entity)
+	local command = entity.destroy_building_request --[[ @as component.destroy_building_request ]]
+	local res = city_builder_game.send(const.REQUEST_DESTROY_BUILDING_KEY, command.field_position)
+
+	handle_game_response(entity, res, function()
+		for _, position in ipairs(res.response.positions) do
+			ecs_game_view.destroy_building_command(position)
+		end
+	end)
+end
+
+---@param entity table
+local function process_creation_request(entity)
+	local command = entity.spawn_building_request --[[ @as component.spawn_building_request ]]
+	local res = city_builder_game.send(const.REQUEST_CREATE_BUILDING_KEY, command.field_position, command.building_data)
+
+	handle_game_response(entity, res, function()
+		ecs_game_view.create_building_command(command.building_data, command.field_position)
+	end)
+end
+
+local function process_hero_move_request(entity)
+	local position = entity.move_hero_request.position
+	local res = city_builder_game.send(const.REQUEST_MOVE_HERO_KEY, position)
+
+	handle_game_response(entity, res, function()
+		ecs_game_view.move_hero_command(res.response.path)
+	end)
+end
+
+local function handle_destruction_requests()
+	for _, entity in ipairs(ecs_game_view.get_building_destroy_requests()) do
+		process_destruction_request(entity)
+	end
+end
+
+local function handle_creation_requests()
+	for _, entity in ipairs(ecs_game_view.get_building_creation_requests()) do
+		process_creation_request(entity)
+	end
+end
+
+local function handle_move_hero_requests()
+	for _, entity in ipairs(ecs_game_view.get_move_hero_requests()) do
+		process_hero_move_request(entity)
+	end
+end
+
+function init(self)
+	-- init_debug_tools()
+	init_game()
+end
+
+local cooldown = 0
+---@param dt number
+function update(_, dt)
+	if cooldown <= 0 then
+		cooldown = 0.1
+		handle_move_hero_requests()
+		handle_destruction_requests()
+		handle_creation_requests()
+	end
+
+	cooldown = cooldown - dt
+end

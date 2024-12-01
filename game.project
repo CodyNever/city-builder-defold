@@ -1,0 +1,33 @@
+[bootstrap]
+main_collection = /main.collectionc
+render = /orthographic/render/orthographic.renderc
+
+[script]
+shared_state = 1
+
+[display]
+width = 960
+height = 640
+high_dpi = 1
+
+[android]
+input_method = HiddenInputField
+
+[html5]
+scale_mode = stretch
+
+[project]
+title = city-builder
+dependencies#0 = https://github.com/britzl/defold-orthographic/archive/master.zip
+dependencies#1 = https://github.com/Insality/druid/archive/refs/tags/1.0.zip
+dependencies#2 = https://github.com/selimanac/defold-astar/archive/master.zip
+
+[sprite]
+max_count = 8196
+
+[collection]
+max_instances = 8196
+
+[input]
+game_binding = /assets/game.input_bindingc
+

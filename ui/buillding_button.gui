@@ -1,0 +1,51 @@
+fonts {
+  name: "text_bold"
+  font: "/druid/fonts/text_bold.font"
+}
+textures {
+  name: "buildings"
+  texture: "/assets/sprites/game.atlas"
+}
+nodes {
+  size {
+    x: 100.0
+    y: 80.0
+  }
+  type: TYPE_BOX
+  id: "building_button"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+  visible: false
+}
+nodes {
+  size {
+    x: 60.0
+    y: 60.0
+  }
+  type: TYPE_BOX
+  texture: "buildings/b0 1x1"
+  id: "icon"
+  parent: "building_button"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    y: -26.0
+  }
+  scale {
+    x: 0.5
+    y: 0.5
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "1x1"
+  font: "text_bold"
+  id: "size"
+  parent: "building_button"
+  inherit_alpha: true
+}
+material: "/builtins/materials/gui.material"
+adjust_reference: ADJUST_REFERENCE_PARENT

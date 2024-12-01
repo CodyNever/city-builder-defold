@@ -1,0 +1,38 @@
+local ecs = require("view_systems.ecs")
+local const = require("game.const")
+
+function init(self)
+	msg.post(".", "acquire_input_focus")
+	ecs.init()
+end
+
+function update(_, dt)
+	ecs.tick(dt)
+end
+
+function final()
+	ecs.finalize()
+end
+
+-- Send player input to ecs world
+function on_input(self, action_id, action)
+	local action_pos = { x = action.x, y = action.y } --[[@as vector2]]
+
+	if action_id == hash(const.INPUT_MOUSE_CLICK_KEY) then
+		if action.pressed then
+			ecs.send_mouse_button_down(action_pos)
+		elseif action.released then
+			ecs.send_mouse_button_up(action_pos)
+		end
+	end
+
+	if action.x and action.y then
+		ecs.send_mouse_move(action_pos)
+	end
+
+	for _, key in ipairs(const.INPUT_KEYS) do
+		if action_id == hash(key) then
+			ecs.send_key_down(key)
+		end
+	end
+end

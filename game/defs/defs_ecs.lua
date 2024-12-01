@@ -1,0 +1,45 @@
+---@class ecs_world
+---@field entities entity[]
+---@field systems system[]
+---@field add fun(self: ecs_world, ...): ...
+---@field addEntity fun(self: ecs_world, entity: entity): entity
+---@field addSystem fun(self: ecs_world, system: system): system
+---@field remove fun(self: ecs_world)
+---@field removeEntity fun(self: ecs_world, entity: entity): entity
+---@field removeSystem fun(self: ecs_world, system: system): system
+---@field refresh fun(self: ecs_world)
+---@field update fun(self: ecs_world, dt:number, filter:fun()|nil)
+---@field clearEntities fun(self: ecs_world)
+---@field clearSystems fun(self: ecs_world)
+---@field getEntityCount fun(self: ecs_world)
+---@field getSystemCount fun(self: ecs_world)
+---@field setSystemIndex fun(self: ecs_world)
+---@field entitiesToChange entity[]
+---@field entitiesToRemove entity[]
+---@field systemsToChange system[]
+---@field systemsToAdd system[]
+---@field systemsToRemove system[]
+
+---@class system
+---@field id string|number|nil
+---@field active boolean
+---@field filter fun(self: system, entity: entity)|nil
+---@field world ecs_world
+---@field entities entity[]
+---@field indices table<entity, number> @Entity index in entities table
+---@field nocache boolean
+---@field index number
+---@field modified boolean
+---@field interval number|nil
+---@field onAdd fun(self: system, entity:entity)|nil
+---@field onRemove fun(self: system, entity:entity)|nil
+---@field onModify fun(dt:number)|nil
+---@field onAddToWorld fun(self: system, ecs_world)|nil
+---@field onRemoveFromWorld fun(self: system, ecs_world)|nil
+---@field preWrap fun(dt:number)|nil
+---@field postWrap fun()|nil
+---@field update fun(dt:number)|nil
+---@field preProcess fun(dt:number)|nil
+---@field process fun(entity:entity, dt:number)|nil
+---@field postProcess fun(dt:number)|nil
+---@field compare fun(e1:entity, e2:entity)|nil

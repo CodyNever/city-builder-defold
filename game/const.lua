@@ -1,0 +1,41 @@
+local M = {}
+
+---@type vector2int
+M.FIELD_SIZE = { x = 80, y = 80 }
+M.TILE_WIDTH = 81
+M.TILE_HEIGHT = 42
+M.SQR_DISTANCE_TO_DESTROY = 625
+M.CAMERA_BOUNDS_OFFSET = 100
+M.CAMERA_SPEED = 600
+M.TRUNCATING_GRID_CELL_SIZE = 100
+M.DELAY_BETWEEN_HERO_MOVE = 0.1
+M.UI_ERROR_TIME = 2
+
+M.IS_DEBUG = true
+
+M.PREFAB_BUILDING = "building"
+M.PREFAB_CAMERA = "camera"
+M.PREFAB_TILE = "tile"
+M.PREFAB_EXPLOSION = "explosion"
+M.PREFAB_HERO = "hero"
+M.PREFAB_PATH_CIRCLE = "path_circle"
+
+M.INPUT_MOUSE_MOVE = "mouse_move"
+M.INPUT_MOUSE_UP = "mouse_up"
+M.INPUT_MOUSE_DOWN = "mouse_down"
+M.INPUT_MOUSE_CLICK_KEY = "touch"
+
+M.INPUT_KEY_W = "key_w"
+M.INPUT_KEY_S = "key_s"
+M.INPUT_KEY_A = "key_a"
+M.INPUT_KEY_D = "key_d"
+
+M.INPUT_KEYS = { M.INPUT_KEY_W, M.INPUT_KEY_S, M.INPUT_KEY_A, M.INPUT_KEY_D }
+
+M.REQUEST_INIT_FIELD_KEY = "init_field"
+M.REQUEST_CREATE_BUILDING_KEY = "create_buidling"
+M.REQUEST_DESTROY_BUILDING_KEY = "destroy_buidling"
+M.REQUEST_CREATE_HERO_KEY = "create_hero"
+M.REQUEST_MOVE_HERO_KEY = "move_hero"
+
+return M

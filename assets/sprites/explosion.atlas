@@ -1,0 +1,149 @@
+animations {
+  id: "boom"
+  images {
+    image: "/assets/sprites/explosion/ANIM_Explosion_001.png"
+  }
+  images {
+    image: "/assets/sprites/explosion/ANIM_Explosion_002.png"
+  }
+  images {
+    image: "/assets/sprites/explosion/ANIM_Explosion_003.png"
+  }
+  images {
+    image: "/assets/sprites/explosion/ANIM_Explosion_004.png"
+  }
+  images {
+    image: "/assets/sprites/explosion/ANIM_Explosion_005.png"
+  }
+  images {
+    image: "/assets/sprites/explosion/ANIM_Explosion_006.png"
+  }
+  images {
+    image: "/assets/sprites/explosion/ANIM_Explosion_007.png"
+  }
+  images {
+    image: "/assets/sprites/explosion/ANIM_Explosion_008.png"
+  }
+  images {
+    image: "/assets/sprites/explosion/ANIM_Explosion_009.png"
+  }
+  images {
+    image: "/assets/sprites/explosion/ANIM_Explosion_010.png"
+  }
+  images {
+    image: "/assets/sprites/explosion/ANIM_Explosion_011.png"
+  }
+  images {
+    image: "/assets/sprites/explosion/ANIM_Explosion_012.png"
+  }
+  images {
+    image: "/assets/sprites/explosion/ANIM_Explosion_013.png"
+  }
+  images {
+    image: "/assets/sprites/explosion/ANIM_Explosion_014.png"
+  }
+  images {
+    image: "/assets/sprites/explosion/ANIM_Explosion_015.png"
+  }
+  images {
+    image: "/assets/sprites/explosion/ANIM_Explosion_016.png"
+  }
+  images {
+    image: "/assets/sprites/explosion/ANIM_Explosion_017.png"
+  }
+  images {
+    image: "/assets/sprites/explosion/ANIM_Explosion_018.png"
+  }
+  images {
+    image: "/assets/sprites/explosion/ANIM_Explosion_019.png"
+  }
+  images {
+    image: "/assets/sprites/explosion/ANIM_Explosion_020.png"
+  }
+  images {
+    image: "/assets/sprites/explosion/ANIM_Explosion_021.png"
+  }
+  images {
+    image: "/assets/sprites/explosion/ANIM_Explosion_022.png"
+  }
+  images {
+    image: "/assets/sprites/explosion/ANIM_Explosion_023.png"
+  }
+  images {
+    image: "/assets/sprites/explosion/ANIM_Explosion_024.png"
+  }
+  images {
+    image: "/assets/sprites/explosion/ANIM_Explosion_025.png"
+  }
+  images {
+    image: "/assets/sprites/explosion/ANIM_Explosion_026.png"
+  }
+  images {
+    image: "/assets/sprites/explosion/ANIM_Explosion_027.png"
+  }
+  images {
+    image: "/assets/sprites/explosion/ANIM_Explosion_028.png"
+  }
+  images {
+    image: "/assets/sprites/explosion/ANIM_Explosion_029.png"
+  }
+  images {
+    image: "/assets/sprites/explosion/ANIM_Explosion_030.png"
+  }
+  images {
+    image: "/assets/sprites/explosion/ANIM_Explosion_031.png"
+  }
+  images {
+    image: "/assets/sprites/explosion/ANIM_Explosion_032.png"
+  }
+  images {
+    image: "/assets/sprites/explosion/ANIM_Explosion_033.png"
+  }
+  images {
+    image: "/assets/sprites/explosion/ANIM_Explosion_034.png"
+  }
+  images {
+    image: "/assets/sprites/explosion/ANIM_Explosion_035.png"
+  }
+  images {
+    image: "/assets/sprites/explosion/ANIM_Explosion_036.png"
+  }
+  images {
+    image: "/assets/sprites/explosion/ANIM_Explosion_037.png"
+  }
+  images {
+    image: "/assets/sprites/explosion/ANIM_Explosion_038.png"
+  }
+  images {
+    image: "/assets/sprites/explosion/ANIM_Explosion_039.png"
+  }
+  images {
+    image: "/assets/sprites/explosion/ANIM_Explosion_040.png"
+  }
+  images {
+    image: "/assets/sprites/explosion/ANIM_Explosion_041.png"
+  }
+  images {
+    image: "/assets/sprites/explosion/ANIM_Explosion_042.png"
+  }
+  images {
+    image: "/assets/sprites/explosion/ANIM_Explosion_043.png"
+  }
+  images {
+    image: "/assets/sprites/explosion/ANIM_Explosion_044.png"
+  }
+  images {
+    image: "/assets/sprites/explosion/ANIM_Explosion_045.png"
+  }
+  images {
+    image: "/assets/sprites/explosion/ANIM_Explosion_046.png"
+  }
+  images {
+    image: "/assets/sprites/explosion/ANIM_Explosion_047.png"
+  }
+  images {
+    image: "/assets/sprites/explosion/ANIM_Explosion_048.png"
+  }
+  fps: 60
+}
+extrude_borders: 2

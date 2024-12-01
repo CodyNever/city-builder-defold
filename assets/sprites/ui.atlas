@@ -1,0 +1,4 @@
+images {
+  image: "/assets/sprites/btn.png"
+}
+extrude_borders: 2

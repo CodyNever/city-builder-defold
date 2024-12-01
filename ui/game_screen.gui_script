@@ -1,0 +1,151 @@
+local druid = require("druid.druid")
+local ecs_game_view = require("view_systems.ecs")
+local game_math = require("game.utils.game_math")
+local game_state = require("game.core.game_state")
+local city_builder_game = require("game.core.city_builder_game")
+local buildings_list = require("game.buildings_list")
+local const = require("game.const")
+
+---@param count number
+local function create_buildings(count)
+	for _ = 1, count do
+		ecs_game_view.create_building_request(game_math.random_building(), game_math.random_position_in_field())
+	end
+end
+
+---@param positions vector2int[]
+---@param count number
+local function destroy_buildings(positions, count)
+	local limit = math.abs(count)
+	for index, position in ipairs(positions) do
+		if index > limit then
+			break
+		end
+		ecs_game_view.destroy_building_request(position)
+	end
+end
+
+---@param count number
+local function handle_mass_button(self, count)
+	if count > 0 then
+		create_buildings(count)
+	else
+		destroy_buildings(game_state.get_buildings_positions(self.session_state), count)
+	end
+end
+
+---@param building_data building_data
+local function start_building_placing(self, building_data)
+	ecs_game_view.create_floating_building_command(building_data)
+end
+
+function init(self)
+	self.druid = druid.new(self)
+	self.session_state = city_builder_game.session_state
+	self.buildings_count = 0
+	self.error_text = {}
+	self.error_clear_timer = 0
+
+	local mass_buttons = { "+10", "+100", "+1000", "-10", "-100", "-1000" }
+	local mass_values = { 10, 100, 1000, -10, -100, -1000 }
+
+	for i, label in ipairs(mass_buttons) do
+		self.druid:new_button(label .. "/mass_button", handle_mass_button, mass_values[i])
+	end
+
+	for i, building in ipairs(buildings_list.buildings) do
+		self.druid:new_button("b" .. i .. "/building_button", start_building_placing, building)
+	end
+
+	city_builder_game.add_listener(const.REQUEST_CREATE_BUILDING_KEY, msg.url())
+	city_builder_game.add_listener(const.REQUEST_DESTROY_BUILDING_KEY, msg.url())
+	city_builder_game.add_listener(const.REQUEST_MOVE_HERO_KEY, msg.url())
+end
+
+function final(self)
+	self.druid:final()
+	city_builder_game.remove_listener(const.REQUEST_CREATE_BUILDING_KEY, msg.url())
+	city_builder_game.remove_listener(const.REQUEST_DESTROY_BUILDING_KEY, msg.url())
+	city_builder_game.remove_listener(const.REQUEST_MOVE_HERO_KEY, msg.url())
+end
+
+---@param dt number
+function update(self, dt)
+	self.druid:update(dt)
+
+	-- Update the error clear timer
+	if self.error_clear_timer > 0 then
+		self.error_clear_timer = self.error_clear_timer - dt
+		if self.error_clear_timer <= 0 then
+			self.error_text = {}
+			gui.set_text(gui.get_node("error_text"), "")
+		end
+	end
+end
+
+---@param self table
+---@param message_id hash
+local function handle_buildings_count_change(self, message_id)
+	if message_id == hash(const.REQUEST_CREATE_BUILDING_KEY) then
+		self.buildings_count = self.buildings_count + 1
+	elseif message_id == hash(const.REQUEST_DESTROY_BUILDING_KEY) then
+		self.buildings_count = self.buildings_count - 1
+	end
+	gui.set_text(gui.get_node("buildings_count_text"), self.buildings_count .. " buildings")
+end
+
+---@param self table
+---@param message table
+local function handle_error(self, message)
+	local reason = message.error
+
+	if not reason then
+		return
+	end
+
+	if not self.error_text[reason] then
+		self.error_text[reason] = 0
+	end
+	self.error_text[reason] = self.error_text[reason] + 1
+
+	-- Update error text with formatted reasons
+	local error_lines = {}
+	for err, count in pairs(self.error_text) do
+		if count > 1 then
+			table.insert(error_lines, err .. " (x" .. count .. ")")
+		else
+			table.insert(error_lines, err)
+		end
+	end
+	gui.set_text(gui.get_node("error_text"), table.concat(error_lines, "\n"))
+
+	-- Reset the error clear timer
+	self.error_clear_timer = const.UI_ERROR_TIME
+end
+
+---@param self table
+---@param message_id hash
+---@param message table
+---@param sender url
+function on_message(self, message_id, message, sender)
+	self.druid:on_message(message_id, message, sender)
+
+	if
+		message_id == hash(const.REQUEST_CREATE_BUILDING_KEY)
+		or message_id == hash(const.REQUEST_DESTROY_BUILDING_KEY)
+		or message_id == hash(const.REQUEST_MOVE_HERO_KEY)
+	then
+		if message.success then
+			handle_buildings_count_change(self, message_id)
+		else
+			handle_error(self, message)
+		end
+	end
+end
+
+---@param self table
+---@param action_id hash
+---@param action table
+function on_input(self, action_id, action)
+	return self.druid:on_input(action_id, action)
+end

@@ -1,0 +1,32 @@
+
+---@class entity
+---@field field_position component.field_position?
+---@field world_position component.world_position?
+---@field object_hash component.object_hash?
+---@field view component.view?
+---@field input_based_movement component.input_based_movement?
+---@field mouse_position component.mouse_position?
+---@field field_tile component.field_tile?
+---@field camera component.camera?
+---@field building component.building?
+---@field hero component.hero?
+---@field floating_building component.floating_building?
+---@field movement_path component.movement_path?
+---@field spawn_tile_command component.spawn_tile_command?
+---@field spawn_camera_command component.spawn_camera_command?
+---@field spawn_hero_command component.spawn_hero_command?
+---@field spawn_building_command component.spawn_building_command?
+---@field destroy_building_command component.destroy_building_command?
+---@field create_floating_building_command component.create_floating_building_command?
+---@field move_hero_command component.move_hero_command?
+---@field spawn_building_request component.spawn_building_request?
+---@field destroy_building_request component.destroy_building_request?
+---@field move_hero_request component.move_hero_request?
+---@field view_screen_state_changed_flag component.view_screen_state_changed_flag?
+---@field request_processed_flag component.request_processed_flag?
+---@field force_update_culling_flag component.force_update_culling_flag?
+---@field mouse_button_down_event component.mouse_button_down_event?
+---@field mouse_button_up_event component.mouse_button_up_event?
+---@field mouse_move_event component.mouse_move_event?
+---@field key_down_event component.key_down_event?
+---@field camera_moved_event component.camera_moved_event?

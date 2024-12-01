@@ -1,0 +1,465 @@
+script: "/ui/game_screen.gui_script"
+fonts {
+  name: "text_bold"
+  font: "/druid/fonts/text_bold.font"
+}
+nodes {
+  position {
+    x: 886.0
+    y: 320.0
+  }
+  type: TYPE_BOX
+  id: "mass_buttons"
+  xanchor: XANCHOR_RIGHT
+  pivot: PIVOT_E
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+  visible: false
+}
+nodes {
+  position {
+    y: 150.0
+  }
+  type: TYPE_TEMPLATE
+  id: "+10"
+  parent: "mass_buttons"
+  inherit_alpha: true
+  template: "/ui/mass_action_button.gui"
+}
+nodes {
+  type: TYPE_BOX
+  id: "+10/mass_button"
+  parent: "+10"
+  template_node_child: true
+}
+nodes {
+  type: TYPE_BOX
+  id: "+10/box"
+  parent: "+10/mass_button"
+  template_node_child: true
+}
+nodes {
+  type: TYPE_TEXT
+  text: "+10\n"
+  ""
+  id: "+10/text"
+  parent: "+10/mass_button"
+  overridden_fields: 8
+  template_node_child: true
+}
+nodes {
+  position {
+    y: 90.0
+  }
+  type: TYPE_TEMPLATE
+  id: "+100"
+  parent: "mass_buttons"
+  inherit_alpha: true
+  template: "/ui/mass_action_button.gui"
+}
+nodes {
+  type: TYPE_BOX
+  id: "+100/mass_button"
+  parent: "+100"
+  template_node_child: true
+}
+nodes {
+  type: TYPE_BOX
+  id: "+100/box"
+  parent: "+100/mass_button"
+  template_node_child: true
+}
+nodes {
+  type: TYPE_TEXT
+  text: "+100\n"
+  ""
+  id: "+100/text"
+  parent: "+100/mass_button"
+  overridden_fields: 8
+  template_node_child: true
+}
+nodes {
+  position {
+    y: 30.0
+  }
+  type: TYPE_TEMPLATE
+  id: "+1000"
+  parent: "mass_buttons"
+  inherit_alpha: true
+  template: "/ui/mass_action_button.gui"
+}
+nodes {
+  type: TYPE_BOX
+  id: "+1000/mass_button"
+  parent: "+1000"
+  template_node_child: true
+}
+nodes {
+  type: TYPE_BOX
+  id: "+1000/box"
+  parent: "+1000/mass_button"
+  template_node_child: true
+}
+nodes {
+  type: TYPE_TEXT
+  text: "+1000"
+  id: "+1000/text"
+  parent: "+1000/mass_button"
+  overridden_fields: 8
+  template_node_child: true
+}
+nodes {
+  position {
+    y: -30.0
+  }
+  type: TYPE_TEMPLATE
+  id: "-1000"
+  parent: "mass_buttons"
+  inherit_alpha: true
+  template: "/ui/mass_action_button.gui"
+}
+nodes {
+  type: TYPE_BOX
+  id: "-1000/mass_button"
+  parent: "-1000"
+  template_node_child: true
+}
+nodes {
+  type: TYPE_BOX
+  id: "-1000/box"
+  parent: "-1000/mass_button"
+  template_node_child: true
+}
+nodes {
+  type: TYPE_TEXT
+  text: "-1000"
+  id: "-1000/text"
+  parent: "-1000/mass_button"
+  overridden_fields: 8
+  template_node_child: true
+}
+nodes {
+  position {
+    y: -90.0
+  }
+  type: TYPE_TEMPLATE
+  id: "-100"
+  parent: "mass_buttons"
+  inherit_alpha: true
+  template: "/ui/mass_action_button.gui"
+}
+nodes {
+  type: TYPE_BOX
+  id: "-100/mass_button"
+  parent: "-100"
+  template_node_child: true
+}
+nodes {
+  type: TYPE_BOX
+  id: "-100/box"
+  parent: "-100/mass_button"
+  template_node_child: true
+}
+nodes {
+  type: TYPE_TEXT
+  text: "-100"
+  id: "-100/text"
+  parent: "-100/mass_button"
+  overridden_fields: 8
+  template_node_child: true
+}
+nodes {
+  position {
+    y: -150.0
+  }
+  type: TYPE_TEMPLATE
+  id: "-10"
+  parent: "mass_buttons"
+  inherit_alpha: true
+  template: "/ui/mass_action_button.gui"
+}
+nodes {
+  type: TYPE_BOX
+  id: "-10/mass_button"
+  parent: "-10"
+  template_node_child: true
+}
+nodes {
+  type: TYPE_BOX
+  id: "-10/box"
+  parent: "-10/mass_button"
+  template_node_child: true
+}
+nodes {
+  type: TYPE_TEXT
+  text: "-10"
+  id: "-10/text"
+  parent: "-10/mass_button"
+  overridden_fields: 8
+  template_node_child: true
+}
+nodes {
+  position {
+    x: 60.0
+    y: 320.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_BOX
+  id: "buildings"
+  xanchor: XANCHOR_LEFT
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+  visible: false
+}
+nodes {
+  position {
+    y: 225.0
+  }
+  type: TYPE_TEMPLATE
+  id: "b1"
+  parent: "buildings"
+  inherit_alpha: true
+  template: "/ui/buillding_button.gui"
+}
+nodes {
+  type: TYPE_BOX
+  id: "b1/building_button"
+  parent: "b1"
+  template_node_child: true
+}
+nodes {
+  type: TYPE_BOX
+  id: "b1/icon"
+  parent: "b1/building_button"
+  template_node_child: true
+}
+nodes {
+  type: TYPE_TEXT
+  id: "b1/size"
+  parent: "b1/building_button"
+  template_node_child: true
+}
+nodes {
+  position {
+    y: 150.0
+  }
+  type: TYPE_TEMPLATE
+  id: "b2"
+  parent: "buildings"
+  inherit_alpha: true
+  template: "/ui/buillding_button.gui"
+}
+nodes {
+  type: TYPE_BOX
+  id: "b2/building_button"
+  parent: "b2"
+  template_node_child: true
+}
+nodes {
+  type: TYPE_BOX
+  texture: "buildings/b3 1x1"
+  id: "b2/icon"
+  parent: "b2/building_button"
+  overridden_fields: 9
+  template_node_child: true
+}
+nodes {
+  type: TYPE_TEXT
+  id: "b2/size"
+  parent: "b2/building_button"
+  template_node_child: true
+}
+nodes {
+  position {
+    y: 75.0
+  }
+  type: TYPE_TEMPLATE
+  id: "b3"
+  parent: "buildings"
+  inherit_alpha: true
+  template: "/ui/buillding_button.gui"
+}
+nodes {
+  type: TYPE_BOX
+  id: "b3/building_button"
+  parent: "b3"
+  template_node_child: true
+}
+nodes {
+  type: TYPE_BOX
+  texture: "buildings/b4 1x1"
+  id: "b3/icon"
+  parent: "b3/building_button"
+  overridden_fields: 9
+  template_node_child: true
+}
+nodes {
+  type: TYPE_TEXT
+  id: "b3/size"
+  parent: "b3/building_button"
+  template_node_child: true
+}
+nodes {
+  type: TYPE_TEMPLATE
+  id: "b4"
+  parent: "buildings"
+  inherit_alpha: true
+  template: "/ui/buillding_button.gui"
+}
+nodes {
+  type: TYPE_BOX
+  id: "b4/building_button"
+  parent: "b4"
+  template_node_child: true
+}
+nodes {
+  type: TYPE_BOX
+  texture: "buildings/b6 1x1"
+  id: "b4/icon"
+  parent: "b4/building_button"
+  overridden_fields: 9
+  template_node_child: true
+}
+nodes {
+  type: TYPE_TEXT
+  id: "b4/size"
+  parent: "b4/building_button"
+  template_node_child: true
+}
+nodes {
+  position {
+    y: -75.0
+  }
+  type: TYPE_TEMPLATE
+  id: "b5"
+  parent: "buildings"
+  inherit_alpha: true
+  template: "/ui/buillding_button.gui"
+}
+nodes {
+  type: TYPE_BOX
+  id: "b5/building_button"
+  parent: "b5"
+  template_node_child: true
+}
+nodes {
+  type: TYPE_BOX
+  texture: "buildings/b2 2x2"
+  id: "b5/icon"
+  parent: "b5/building_button"
+  overridden_fields: 9
+  template_node_child: true
+}
+nodes {
+  type: TYPE_TEXT
+  text: "2x2"
+  id: "b5/size"
+  parent: "b5/building_button"
+  overridden_fields: 8
+  template_node_child: true
+}
+nodes {
+  position {
+    y: -150.0
+  }
+  type: TYPE_TEMPLATE
+  id: "b6"
+  parent: "buildings"
+  inherit_alpha: true
+  template: "/ui/buillding_button.gui"
+}
+nodes {
+  type: TYPE_BOX
+  id: "b6/building_button"
+  parent: "b6"
+  template_node_child: true
+}
+nodes {
+  type: TYPE_BOX
+  texture: "buildings/b5 2x2"
+  id: "b6/icon"
+  parent: "b6/building_button"
+  overridden_fields: 9
+  template_node_child: true
+}
+nodes {
+  type: TYPE_TEXT
+  text: "2x2"
+  id: "b6/size"
+  parent: "b6/building_button"
+  overridden_fields: 8
+  template_node_child: true
+}
+nodes {
+  position {
+    y: -225.0
+  }
+  type: TYPE_TEMPLATE
+  id: "b7"
+  parent: "buildings"
+  inherit_alpha: true
+  template: "/ui/buillding_button.gui"
+}
+nodes {
+  type: TYPE_BOX
+  id: "b7/building_button"
+  parent: "b7"
+  template_node_child: true
+}
+nodes {
+  type: TYPE_BOX
+  texture: "buildings/b1 3x2"
+  id: "b7/icon"
+  parent: "b7/building_button"
+  overridden_fields: 9
+  template_node_child: true
+}
+nodes {
+  type: TYPE_TEXT
+  text: "3x2"
+  id: "b7/size"
+  parent: "b7/building_button"
+  overridden_fields: 8
+  template_node_child: true
+}
+nodes {
+  position {
+    x: 481.0
+    y: 602.0
+  }
+  scale {
+    x: 0.5
+    y: 0.5
+  }
+  type: TYPE_TEXT
+  text: "0 buildings"
+  font: "text_bold"
+  id: "buildings_count_text"
+  yanchor: YANCHOR_TOP
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 481.0
+    y: 16.0
+  }
+  scale {
+    x: 0.5
+    y: 0.5
+  }
+  color {
+    y: 0.0
+    z: 0.0
+  }
+  type: TYPE_TEXT
+  font: "text_bold"
+  id: "error_text"
+  yanchor: YANCHOR_BOTTOM
+  pivot: PIVOT_S
+  inherit_alpha: true
+}
+material: "/builtins/materials/gui.material"
+adjust_reference: ADJUST_REFERENCE_PARENT
