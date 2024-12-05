@@ -17,6 +17,7 @@
 - https://github.com/selimanac/defold-astar/archive/master.zip
 
 #### Boot collection: main.collection
+#### Defold version: 1.9.3
 
 <img src="./readme/image_2024-12-01_00-58-50.png" alt="drawing" width="800"/>
 <img src="./readme/image_2024-12-01_00-59-36.png" alt="drawing" width="800"/>
